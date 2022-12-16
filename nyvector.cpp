@@ -13,7 +13,7 @@ private:
 };
 
 template <typename T>
-class NYvector {
+class YNvector {
 private:
     T* ptr;
     int size;
@@ -80,10 +80,10 @@ public:
     iterator give_me(int n) { return iterator(ptr + n); }
     iterator give_me(T* p) { return iterator(p); }
     iterator end() { return iterator(ptr+capacity); }
-    NYvector(int n) :capacity(n),size(0) {
+    YNvector(int n) :capacity(n),size(0) {
         ptr = new T[n];
     }
-    NYvector(T* arr, int n) :size(n), capacity(n) {
+    YNvector(T* arr, int n) :size(n), capacity(n) {
         ptr = new T[n];
         for (int i = 0; i < n; i++)
         {
@@ -110,7 +110,7 @@ public:
     }
     const int capacity_of() { return capacity; }
     const int size_of() { return size; }
-    NYvector(const NYvector& other)
+    YNvector(const YNvector& other)
     {
         capacity = other.capacity;
         size = other.size;
@@ -120,7 +120,7 @@ public:
             ptr[i] = other.ptr[i];
         }
     }
-    NYvector& operator=(const NYvector& from)
+    YNvector& operator=(const YNvector& from)
     {
         if (this != &from)
         {
@@ -137,7 +137,7 @@ public:
         }
         return *this;
     }
-    NYvector& operator=(const NYvector&& from)
+    YNvector& operator=(const YNvector&& from)
     {
         if (this != &from)
         {
@@ -238,7 +238,7 @@ public:
         ptr = nullptr;
         size = 0;
     }
-    ~NYvector() {  delete[] ptr ; }
+    ~YNvector() {  delete[] ptr ; }
     void show() { for (int i = 0; i < capacity; i++) { cout << ptr[i]; } }
 
     // Pushback function
@@ -278,7 +278,7 @@ public:
     int get_capacity(){ return capacity; }
 
     // default constructor
-    NYvector(){
+    YNvector(){
         size = 0;
         capacity = 1;
         ptr = new T[capacity];
@@ -319,7 +319,7 @@ public:
             return false;
     }
     // function to print the vector elements
-    friend ostream& operator<<(ostream& out, const NYvector& v){
+    friend ostream& operator<<(ostream& out, const YNvector& v){
         for (int i = 0; i < v.size; i++){
             out << v.ptr[i] << " ";
         }
@@ -327,7 +327,7 @@ public:
     }
 
     // function to check if the vector is equal to another vector
-    bool operator==(const NYvector& v){
+    bool operator==(const YNvector& v){
         if (size != v.size)
             return false;
         for (int i = 0; i < size; i++){
@@ -338,7 +338,7 @@ public:
     }
 
     // function to compare between two vectors
-    bool operator<(const NYvector& v){
+    bool operator<(const YNvector& v){
         if (size < v.size)
             return true;
         else if (size > v.size)
@@ -356,15 +356,15 @@ public:
 int main()
 {
 //    int arr[5] = { 1,2,3,4,5 };
-//    NYvector<int> v(arr,5);
-//    NYvector<int> d(5);
+//    YNvector<int> v(arr,5);
+//    YNvector<int> d(5);
 //    d = v;
 //    d.clear();
 //    d = v;
 //    d.insert(d.give_me(0), 0);
 //    for (auto i = d.begin(); i < d.end();i++) { cout << *i << "\t"; }
     // test cases
-//    NYvector<int> v1;
+//    YNvector<int> v1;
 //    for (int i = 1; i <= 10; i++){
 //        v1.push_back(i);
 //    }
@@ -388,8 +388,8 @@ int main()
 //    cout << v1.empty() << endl; // 0
 //    v1.resize(0);
 //    cout << v1.empty() << endl; // 1
-    NYvector<int> v2;
-    NYvector<int> v3;
+    YNvector<int> v2;
+    YNvector<int> v3;
     for (int i = 1; i <= 5; i++){
         v2.push_back(i);
         v3.push_back(i);
